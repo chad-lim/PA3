@@ -19,8 +19,6 @@ int main(){
 	// Sets the created stack object equal to the stack returned by readFile()
 	stack = readFile(fileName);
 
-	// stack.printStack();
-	// cout << endl;
 
 
 	Stack keywords;
@@ -65,7 +63,7 @@ int main(){
 			c = temp.at(i);
 			string s(1,c);
 
-			if (!operators.contains(s) && !operators.contains(temp)){
+			//if (!operators.contains(s) && !operators.contains(temp)){
 
 				if (temp == "++)" || temp == "++;" || temp == "--)" || temp == "--;" || s == "-" || s == "*" || s == "/" ||  s == "%" || s == "+" || s == "="){
 
@@ -86,8 +84,9 @@ int main(){
 					}
 
 					else{
-						//cout << temp << endl;
+
 						isSyntaxError = false;
+
 						if (!operators.contains(s)){
 							operators.push(s);
 						}
@@ -95,45 +94,7 @@ int main(){
 					}
 				}
 			}
-		}
-
-
-
-
-		// KEYWORDS WORK DON'T TOUCH
-
-		if (temp == "FOR" || temp == "BEGIN" || temp == "END"){
-			if (!keywords.contains(temp)){
-				keywords.push(temp);
-			}
-			if (temp == "FOR"){
-				countFor++;
-			}
-			else if (temp == "BEGIN"){
-				countBegin++;
-			}
-			else if(temp == "END"){
-				countEnd++;
-			}
-
-		}
-
-		// Constants
-		else if(temp.at(0) != '(' && temp.at(temp.length()-1) == ',') {
-
-			if (!constants.contains(temp.substr(0, temp.length()-1))){
-				constants.push(temp.substr(0, temp.length()-1));
-			}
-
-		}
-
-		// else if
-
-		else if (isSyntaxError){
-			syntaxErrors.push(temp);
-		}
-
-		// Identifiers will be by themselves they'll have an equal sign direclty in the middle or they will have an open paren to the left and a comma to the right
+		//}
 
 		// TODO: FIX THIS
 		// check to see if the amountz] of letters equals the length of the popped object
@@ -160,6 +121,14 @@ int main(){
 				}
 			}
 
+			else if (s == "("){
+				temp = temp.at(1);
+				isSyntaxError = false;
+				if(!identifiers.contains(temp)){
+					identifiers.push(temp);
+				}
+			}
+
 			else if (temp.length() == 1 && c >= 'a' && c <= 'z'){
 				isSyntaxError = false;
 				if (!identifiers.contains(temp)){
@@ -168,6 +137,41 @@ int main(){
 			}
 
 		}
+
+
+		// KEYWORDS WORK DON'T TOUCH
+		if (temp == "FOR" || temp == "BEGIN" || temp == "END"){
+			if (!keywords.contains(temp)){
+				keywords.push(temp);
+			}
+			if (temp == "FOR"){
+				countFor++;
+			}
+			else if (temp == "BEGIN"){
+				countBegin++;
+			}
+			else if(temp == "END"){
+				countEnd++;
+			}
+
+		}
+
+		// Constants
+		else if(temp.at(0) != '(' && temp.at(temp.length()-1) == ',') {
+
+			if (!constants.contains(temp.substr(0, temp.length()-1))){
+				constants.push(temp.substr(0, temp.length()-1));
+			}
+
+		}
+
+		else if (isSyntaxError){
+			syntaxErrors.push(temp);
+		}
+
+		// Identifiers will be by themselves they'll have an equal sign direclty in the middle or they will have an open paren to the left and a comma to the right
+
+
 	}
 
 
@@ -225,3 +229,4 @@ Stack readFile(string fileName){
 	}
 	return stack;
 }
+
