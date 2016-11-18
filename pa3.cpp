@@ -1,3 +1,10 @@
+//
+//  pa3.cpp
+//
+//  Created by Chad Lim on 11/15/16.
+//  Copyright © 2016 Chad Lim. All rights reserved.
+//
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,7 +15,6 @@
 #include "liststack.h"
 
 using namespace std;
-
 
 int main(){
 
@@ -40,7 +46,6 @@ int main(){
 
 	// Determines if something is a syntax error to be output
 	bool isSyntaxError;
-
 
 
 	// Goes through the entire stack created from the file
@@ -229,8 +234,6 @@ int main(){
 
 	return 0;
 }
-
-
 
 // Reads in a file based on file name and returns it as a stack
 Stack readFile(string fileName){
