@@ -1,3 +1,10 @@
+//
+//  pa3.h
+//
+//  Created by Chad Lim on 11/15/16.
+//  Copyright © 2016 Chad Lim. All rights reserved.
+//
+
 #ifndef PA3_H
 #define PA3_H
 #include <iostream>
@@ -5,7 +12,6 @@
 #include "stdio.h"
 
 using namespace std;
-
 
 // Stack class, based on a linked list data structure
 class Stack{
