@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <stdlib.h>
 #include "stdio.h"
-#include "liststack.h"
+#include "pa3.h"
 
 using namespace std;
 
