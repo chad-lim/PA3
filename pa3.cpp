@@ -214,10 +214,10 @@ int main(){
 	cout << "Keywords:";
 	keywords.printStack();
 	cout << endl;
-	cout << "Identiier:";
+	cout << "Identifiers:";
 	identifiers.printStack();
 	cout << endl;
-	cout << "Constant:";
+	cout << "Constants:";
 	constants.printStack();
 	cout << endl;
 	cout << "Operators:";
