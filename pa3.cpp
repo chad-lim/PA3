@@ -1,3 +1,4 @@
+
 //
 //  pa3.cpp
 //
@@ -58,7 +59,7 @@ int main(){
 
 		// Checks for delimiters by going through each individual index of the
 		// popped string, searching for ";" or ","
-		for (int i = 0; i < temp.length(); i++){
+		for (unsigned int i = 0; i < temp.length(); i++){
 
 			char c;
 			c = temp.at(i);
@@ -81,44 +82,44 @@ int main(){
 
 		// Checks for the operators by looping through each individual index
 		// While also checking the entire popped element for specific instances
-		for (int i = 0; i < temp.length(); i++){
+		for (unsigned int i = 0; i < temp.length(); i++){
 
 			char c;
 			c = temp.at(i);
 			string s(1,c);
 
-				// Checks for all possible operators
-				if (temp == "++)" || temp == "++;" || temp == "--)" || temp == "--;" || s == "-" || s == "*" || s == "/" ||  s == "%" || s == "+" || s == "="){
+			// Checks for all possible operators
+			if (temp == "++)" || temp == "++;" || temp == "--)" || temp == "--;" || s == "-" || s == "*" || s == "/" ||  s == "%" || s == "+" || s == "="){
 
-					// Handles the specific case of "++)" at the end of a for loop
-					if (temp == "++)" || temp == "++;"){
-						isSyntaxError = false;
-						if (!operators.contains("++")){
-							operators.push("++");
-						}
+				// Handles the specific case of "++)" at the end of a for loop
+				if (temp == "++)" || temp == "++;"){
+					isSyntaxError = false;
+					if (!operators.contains("++")){
+						operators.push("++");
 					}
+				}
 
-					// Handles the specific case of "--)" at the end of a for loop
-					else if (temp == "--)" || temp == "--;"){
-						isSyntaxError = false;
-						if(!operators.contains("--")){
-							operators.push("--");
-						}
+				// Handles the specific case of "--)" at the end of a for loop
+				else if (temp == "--)" || temp == "--;"){
+					isSyntaxError = false;
+					if(!operators.contains("--")){
+						operators.push("--");
 					}
+				}
 
-					// Handles all other operator cases
-					else{
-						isSyntaxError = false;
-						if (!operators.contains(s)){
-							operators.push(s);
-						}
+				// Handles all other operator cases
+				else{
+					isSyntaxError = false;
+					if (!operators.contains(s)){
+						operators.push(s);
 					}
 				}
 			}
+		}
 
 
 		// Checks for identifiers by going through each index of the popped element
-		for (int i = 0; i < temp.length(); i++){
+		for (unsigned int i = 0; i < temp.length(); i++){
 
 			char c;
 			c = temp.at(i);
@@ -184,7 +185,6 @@ int main(){
 			else if(temp == "END"){
 				countEnd++;
 			}
-
 		}
 
 		// Checks for constants (numbers)
@@ -194,7 +194,6 @@ int main(){
 			if (!constants.contains(temp.substr(0, temp.length()-1))){
 				constants.push(temp.substr(0, temp.length()-1));
 			}
-
 		}
 
 		// Pushes the popped element in to the syntax error stack if it was never
