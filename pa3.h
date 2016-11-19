@@ -20,20 +20,20 @@ private:
 	int stackSize;
 
 	// Creates a node struct
-    typedef struct node{
-        string data;
-        node *next;
-        bool isFree;
-    }* nodePtr;
+	typedef struct node{
+		string data;
+		node *next;
+		bool isFree;
+	}* nodePtr;
 
-    nodePtr head;
-    nodePtr curr;
-    nodePtr temp;
+	nodePtr head;
+	nodePtr curr;
+	nodePtr temp;
 
-// Declares public functions that are a part of the Stack class
-// which can be used on objects of the Stack type in the source file
+	// Declares public functions that are a part of the Stack class
+	// which can be used on objects of the Stack type in the source file
 public:
-    Stack();
+	Stack();
 	void push(string addData);
 	string pop();
 	bool isEmpty();
@@ -42,10 +42,6 @@ public:
 	void printStack();
 	bool exists();
 	string top();
-
-	int bestIndex;
-	int worstIndex;
-	bool print;
 };
 
 // Declares the readFile() method that is used in the .cpp file
@@ -54,9 +50,9 @@ Stack readFile(string fileName);
 
 // Constructor for the Stack object
 Stack::Stack(){
-    head = NULL;
-    curr = NULL;
-    temp = NULL;
+	head = NULL;
+	curr = NULL;
+	temp = NULL;
 	stackSize = 0;
 }
 
@@ -67,19 +63,19 @@ int Stack::size(){
 
 // This function takes in a string, and adds it to the top of the stack
 void Stack::push(string addData){
-    nodePtr n = new node;
-    n->next = NULL;
-    n->data = addData;
-    if (head != NULL){
-        curr = head;
-        while (curr->next != NULL){
-            curr = curr->next;
-        }
-        curr->next = n;
-    }
-    else {
-        head = n;
-    }
+	nodePtr n = new node;
+	n->next = NULL;
+	n->data = addData;
+	if (head != NULL){
+		curr = head;
+		while (curr->next != NULL){
+			curr = curr->next;
+		}
+		curr->next = n;
+	}
+	else {
+		head = n;
+	}
 	stackSize++;
 }
 
@@ -109,7 +105,8 @@ string Stack::pop(){
 	return result;
 }
 
-// This function takes in a string and checks the entire stack to see if it already exists
+// This function takes in a string and loops through the entire stack
+// to see if the string already exists
 bool Stack::contains(string token){
 	if (stackSize != 0){
 		curr = head;
@@ -124,7 +121,6 @@ bool Stack::contains(string token){
 		}
 		return false;
 	}
-
 	return false;
 }
 
@@ -142,9 +138,9 @@ bool Stack::isEmpty(){
 void Stack::printStack(){
 
 	if (stackSize != 0){
-    	while (stackSize != 0){
+		while (stackSize != 0){
 			cout << " " << pop();
-    	}
+		}
 	}
 }
 
